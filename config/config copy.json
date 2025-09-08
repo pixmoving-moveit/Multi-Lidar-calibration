@@ -1,0 +1,159 @@
+{
+    "sensor": 
+    {
+        "index": {
+            "num": 5,
+            "sensor_frame": "sensor_kit_base_link",
+            "calibration file path": "/home/user/catkin_ws/src/lidar_calibration_verif/config/calibration.yaml"
+        },
+        "lidars": {
+            "front_top": {
+                "sensor_name": "front_top",
+                "ros_topic": "/sensing/lidar/front_top/points",
+                "frame_id": "lidar_ft_base_link"
+            },
+            "front_left": {
+                "sensor_name": "front_left",
+                "ros_topic": "/sensing/lidar/front_left/points",
+                "frame_id": "lidar_fl_base_link"
+            },
+            "front_right": {
+                "sensor_name": "front_right",
+                "ros_topic": "/sensing/lidar/front_right/points",
+                "frame_id": "lidar_fr_base_link"
+            },
+            "rear_top": {
+                "sensor_name": "rear_top",
+                "ros_topic": "/sensing/lidar/rear_top/points",
+                "frame_id": "lidar_rt_base_link"
+            },
+            "rear_center": {
+                "sensor_name": "rear_center",
+                "ros_topic": "/sensing/lidar/rear_center/points",
+                "frame_id": "lidar_rear_base_link"
+            } 
+        }
+    },
+    "region_ground":
+    {
+        "front_top": {
+            "num": 2,
+            "coordinate": "(12.3,-2.43,0.0),(11.77,2.5,0.0)",
+            "size": 1.5
+        },
+        "front_left": {
+            "num": 4,
+            "coordinate": "(-4.0,1.8,0.0),(5.9,0.18,0.0),(0.0, 3.0,0.0),(6.0,2.0,0.0)",
+            "size": 1.5
+        },
+        "front_right": {
+            "num": 4,
+            "coordinate": "(-4.0,-2.3,0.0),(5.9,0.18,0.0),(0.0,-3.0,0.0),(6.0,-2.0,0.0)",
+            "size": 1.5
+        },
+        "rear_top": {
+            "num": 2,
+            "coordinate": "(-11.3,-0.7,0.0),(-11.3,2.7,0.0)",
+            "size": 1.2
+        },
+        "rear_center": {
+            "num": 3,
+            "coordinate": "(-4.2,-3.0,0.0),(-4.5,1.8,0.0),(-6.0,-0.3,0.0)",
+            "size": 1.2
+        }
+    },
+    "region_wall_x":
+    {
+        "front_top": {
+            "num": 3,
+            "coordinate": "(0.0,0.0,-0.7),(-5.24,-1.8, -0.8),(0.0,3.5,-0.55)",
+            "size": 1.0
+        },
+        "front_left": {
+            "num": 3,
+            "coordinate": "(-5.24,-1.8, -0.8),(0.0,0.0,-0.7),(0.0,3.5,-0.55)",
+            "size": 1.2
+        },
+        "front_right": {
+            "num": 3,
+            "coordinate": "(-5.24,-1.8, -0.8),(0.0,0.0,-0.7),(0.0,3.5,-0.55)",
+            "size": 1.2
+        },
+        "rear_top": {
+            "num": 2,
+            "coordinate": "(-5.24,-1.8, -0.8),(-5.24,0.0,0.0)",
+            "size": 1.2
+        },
+        "rear_center": {
+            "num": 2,
+            "coordinate": "(-5.24,-1.8, -0.8),(-5.24,0.0,0.0)",
+            "size": 1.2
+        }
+    },
+    "region_wall_y":
+    {
+        "front_top": {
+            "num": 1,
+            "coordinate": "(-5.63,-5.72,-0.7)",
+            "size": 0.4
+        },
+        "front_left": {
+            "num": 1,
+            "coordinate": "(-5.63,-5.72,-0.7)",
+            "size": 0.4
+        },
+        "front_right": {
+            "num": 1,
+            "coordinate": "(-5.63,-5.72,-0.7)",
+            "size": 0.4
+        },
+        "rear_top": {
+            "num": 1,
+            "coordinate": "(-5.63,-5.72,-0.7)",
+            "size": 0.4
+        },
+        "rear_center": {
+            "num": 1,
+            "coordinate": "(-5.63,-5.72,-0.7)",
+            "size": 0.4
+        }
+    },
+    "intensity_plates":
+    {
+        "front_top": {
+            "min_intensity": 220,
+            "max_intensity": 255,
+            "size_min_x": 0.2,
+            "size_min_y": 0.2,
+            "size_max_z": 0.15
+        },
+        "front_left": {
+            "min_intensity": 220,
+            "max_intensity": 255,
+            "size_min_x": 0.2,
+            "size_min_y": 0.2,
+            "size_max_z": 0.1
+        },
+        "front_right": {
+            "min_intensity": 220,
+            "max_intensity": 255,
+            "size_min_x": 0.2,
+            "size_min_y": 0.2,
+            "size_max_z": 0.1
+        },
+        "rear_top": {
+            "min_intensity": 220,
+            "max_intensity": 255,
+            "size_min_x": 0.2,
+            "size_min_y": 0.2,
+            "size_max_z": 0.15
+        },
+        "rear_center": {
+            "min_intensity": 220,
+            "max_intensity": 255,
+            "size_min_x": 0.2,
+            "size_min_y": 0.2,
+            "size_max_z": 0.1
+        }
+    }
+}
