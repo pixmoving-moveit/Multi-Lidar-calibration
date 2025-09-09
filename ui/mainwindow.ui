@@ -248,7 +248,7 @@
      <attribute name="title">
       <string>手动修正</string>
      </attribute>
-     <widget class="QFrame" name="frame">
+     <widget class="QFrame" name="frame_trans_modify">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -266,7 +266,7 @@
       <property name="midLineWidth">
        <number>1</number>
       </property>
-      <widget class="QTableWidget" name="tableWidget_modify">
+      <widget class="QTableWidget" name="table_trans_modify">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -458,10 +458,10 @@
         </property>
        </item>
       </widget>
-      <widget class="QLabel" name="label_axis_modify">
+      <widget class="QLabel" name="label_trans_modify">
        <property name="geometry">
         <rect>
-         <x>410</x>
+         <x>420</x>
          <y>10</y>
          <width>101</width>
          <height>31</height>
@@ -475,10 +475,10 @@
         </font>
        </property>
        <property name="text">
-        <string>水平轴向微调</string>
+        <string>轴向平移 微调</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Button_setZero">
+      <widget class="QPushButton" name="Button_trans_setZero">
        <property name="geometry">
         <rect>
          <x>670</x>
@@ -491,7 +491,7 @@
         <string>全部清空</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Button_modify">
+      <widget class="QPushButton" name="Button_trans_modify">
        <property name="geometry">
         <rect>
          <x>800</x>
@@ -508,16 +508,16 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>50</y>
-         <width>67</width>
-         <height>17</height>
+         <y>46</y>
+         <width>81</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="text">
-        <string>单位(m)</string>
+        <string>单位(米/m)</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_tips">
+      <widget class="QLabel" name="label_tips_trans">
        <property name="geometry">
         <rect>
          <x>680</x>
@@ -530,12 +530,308 @@
         <string>Tips:  </string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_info">
+      <widget class="QLabel" name="label_info_trans">
        <property name="geometry">
         <rect>
          <x>680</x>
          <y>80</y>
          <width>221</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_rotate_modify">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>280</y>
+        <width>931</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::WinPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="midLineWidth">
+       <number>1</number>
+      </property>
+      <widget class="QLabel" name="label_rotate_modify">
+       <property name="geometry">
+        <rect>
+         <x>420</x>
+         <y>10</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>轴向旋转 微调</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>56</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>单位(度/deg)</string>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="table_rotate_modify">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>681</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::DashDotLine</enum>
+       </property>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>70</number>
+       </attribute>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>120</number>
+       </attribute>
+       <attribute name="verticalHeaderDefaultSectionSize">
+        <number>40</number>
+       </attribute>
+       <row>
+        <property name="text">
+         <string>X (Roll)</string>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>Y (Pitch)</string>
+        </property>
+       </row>
+       <row>
+        <property name="text">
+         <string>Z (Yaw)</string>
+        </property>
+       </row>
+       <column>
+        <property name="text">
+         <string>front top</string>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>front right</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>front left</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>rear top</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>rear center</string>
+        </property>
+       </column>
+       <item row="0" column="0">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="0" column="1">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="0" column="2">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="0" column="3">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="0" column="4">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="1" column="0">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="1" column="1">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="1" column="2">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="1" column="3">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="1" column="4">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="2" column="0">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="2" column="1">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="2" column="2">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="2" column="3">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+       <item row="2" column="4">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignCenter</set>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_tips_rotate">
+       <property name="geometry">
+        <rect>
+         <x>710</x>
+         <y>50</y>
+         <width>51</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tips:  </string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Button_rotate_modify">
+       <property name="geometry">
+        <rect>
+         <x>830</x>
+         <y>190</y>
+         <width>89</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>执行修正</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Button_rotate_setZero">
+       <property name="geometry">
+        <rect>
+         <x>700</x>
+         <y>190</y>
+         <width>89</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>全部清空</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_info_rotate">
+       <property name="geometry">
+        <rect>
+         <x>710</x>
+         <y>90</y>
+         <width>201</width>
          <height>81</height>
         </rect>
        </property>

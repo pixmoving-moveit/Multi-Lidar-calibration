@@ -9,27 +9,27 @@
         "lidars": {
             "front_top": {
                 "sensor_name": "front_top",
-                "ros_topic": "/sensing/lidar/corrected/front_top/points",
+                "ros_topic": "/sensing/lidar/front_top/points",
                 "frame_id": "lidar_ft_base_link"
             },
             "front_left": {
                 "sensor_name": "front_left",
-                "ros_topic": "/sensing/lidar/corrected/front_left/points",
+                "ros_topic": "/sensing/lidar/front_left/points",
                 "frame_id": "lidar_fl_base_link"
             },
             "front_right": {
                 "sensor_name": "front_right",
-                "ros_topic": "/sensing/lidar/corrected/front_right/points",
+                "ros_topic": "/sensing/lidar/front_right/points",
                 "frame_id": "lidar_fr_base_link"
             },
             "rear_top": {
                 "sensor_name": "rear_top",
-                "ros_topic": "/sensing/lidar/corrected/rear_top/points",
+                "ros_topic": "/sensing/lidar/rear_top/points",
                 "frame_id": "lidar_rt_base_link"
             },
             "rear_center": {
                 "sensor_name": "rear_center",
-                "ros_topic": "/sensing/lidar/corrected/rear_center/points",
+                "ros_topic": "/sensing/lidar/rear_center/points",
                 "frame_id": "lidar_rear_base_link"
             } 
         }
@@ -38,24 +38,24 @@
     "region_ground":
     {
         "front_top": {
-            "num": 2,
-            "coordinate": "(12.3,-2.43,0.0),(11.77,2.5,0.0)",
-            "size": 1.5
+            "num": 3,
+            "coordinate": "(12.3,-4.0,0.0),(15,3.0,0.0),(11.77,4.0,0.0)",
+            "size": 2.0
         },
         "front_left": {
             "num": 4,
-            "coordinate": "(-4.0,1.8,0.0),(5.9,0.18,0.0),(0.0, 3.0,0.0),(6.0,2.0,0.0)",
+            "coordinate": "(-4.0,1.8,0.0),(5.9,0.18,0.0),(0.0, 4.0,0.0),(6.0,2.0,0.0)",
             "size": 1.5
         },
         "front_right": {
             "num": 4,
-            "coordinate": "(-4.0,-2.3,0.0),(5.9,0.18,0.0),(0.0,-3.0,0.0),(6.0,-2.0,0.0)",
+            "coordinate": "(-4.0,-2.3,0.0),(5.9,0.18,0.0),(0.0,-4.0,0.0),(6.0,-2.0,0.0)",
             "size": 1.5
         },
         "rear_top": {
             "num": 2,
-            "coordinate": "(-11.3,-0.7,0.0),(-11.3,2.7,0.0)",
-            "size": 1.2
+            "coordinate": "(-11.3,4.0,0.0),(-12.0,0.0,0.0),(-12.0,-3.0,0.0)",
+            "size": 2.0
         },
         "rear_center": {
             "num": 3,
@@ -66,28 +66,28 @@
     "region_wall_x":
     {
         "front_top": {
-            "num": 3,
-            "coordinate": "(0.0,0.0,-0.7),(-5.24,-1.8, -0.8),(0.0,3.5,-0.55)",
-            "size": 1.0
+            "num": 4,
+            "coordinate": "(0.0,5.0,-1.35),(0.0,2.5,-1.4),(0.0,-1.8, -1.4),(0.0,-4.2,-1.5)",
+            "size": 1.2
         },
         "front_left": {
-            "num": 3,
-            "coordinate": "(-5.24,-1.8, -0.8),(0.0,0.0,-0.7),(0.0,3.5,-0.55)",
+            "num": 4,
+            "coordinate": "(0.0,5.0,-1.35),(0.0,2.5,-1.4),(0.0,-1.8, -1.4),(0.0,-4.2,-1.5)",
             "size": 1.2
         },
         "front_right": {
-            "num": 3,
-            "coordinate": "(-5.24,-1.8, -0.8),(0.0,0.0,-0.7),(0.0,3.5,-0.55)",
+            "num": 7,
+            "coordinate": "(0.0,5.0,-1.35),(0.0,2.5,-1.4),(0.0,-1.8, -1.4),(0.0,-4.2,-1.5),(0.0,-3.3, -1.14),(0.0,-4.89,-1.17),(0.0,-8.8,-1.3)",
             "size": 1.2
         },
         "rear_top": {
-            "num": 2,
-            "coordinate": "(-5.24,-1.8, -0.8),(-5.24,0.0,0.0)",
+            "num": 3,
+            "coordinate": "(0.0,-3.3, -1.14),(0.0,-4.89,-1.17),(0.0,-8.8,-1.3)",
             "size": 1.2
         },
         "rear_center": {
-            "num": 2,
-            "coordinate": "(-5.24,-1.8, -0.8),(-5.24,0.0,0.0)",
+            "num": 3,
+            "coordinate": "(0.0,-3.3, -1.14),(0.0,-4.89,-1.17),(0.0,-8.8,-1.3)",
             "size": 1.2
         }
     },

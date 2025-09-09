@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "numeric": "cpp",
+        "ranges": "cpp",
+        "regex": "cpp",
+        "cmath": "cpp"
+    }
+}

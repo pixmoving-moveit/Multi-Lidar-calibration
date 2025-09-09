@@ -643,6 +643,42 @@ void rclcomm::setAxisModifyByName(const std::string& lidar_name, const std::vect
     }
 }
 
+void rclcomm::setRotateModifyByName(const std::string& lidar_name, const std::vector<double>& values)
+{
+    if (values.size() != 3) return; // 确保传入的values大小正确
+
+    if (lidar_name == init_params.lidar_front_top.sensor_name) 
+    {
+        if(fabs(values[0]) > 1e-3) init_params.lidar_front_top.transform.roll += values[0]*M_PI/180.0;
+        if(fabs(values[1]) > 1e-3) init_params.lidar_front_top.transform.pitch += values[1]*M_PI/180.0;
+        if(fabs(values[2]) > 1e-3) init_params.lidar_front_top.transform.yaw += values[2]*M_PI/180.0;
+    } 
+    else if (lidar_name == init_params.lidar_front_right.sensor_name) 
+    {
+        if(fabs(values[0]) > 1e-3) init_params.lidar_front_right.transform.roll += values[0]*M_PI/180.0;
+        if(fabs(values[1]) > 1e-3) init_params.lidar_front_right.transform.pitch += values[1]*M_PI/180.0;
+        if(fabs(values[2]) > 1e-3) init_params.lidar_front_right.transform.yaw += values[2]*M_PI/180.0;
+    } 
+    else if (lidar_name == init_params.lidar_front_left.sensor_name) 
+    {
+        if(fabs(values[0]) > 1e-3) init_params.lidar_front_left.transform.roll += values[0]*M_PI/180.0;
+        if(fabs(values[1]) > 1e-3) init_params.lidar_front_left.transform.pitch += values[1]*M_PI/180.0;
+        if(fabs(values[2]) > 1e-3) init_params.lidar_front_left.transform.yaw += values[2]*M_PI/180.0;
+    } 
+    else if (lidar_name == init_params.lidar_rear_top.sensor_name) 
+    {
+        if(fabs(values[0]) > 1e-3) init_params.lidar_rear_top.transform.roll += values[0]*M_PI/180.0;
+        if(fabs(values[1]) > 1e-3) init_params.lidar_rear_top.transform.pitch += values[1]*M_PI/180.0;
+        if(fabs(values[2]) > 1e-3) init_params.lidar_rear_top.transform.yaw += values[2]*M_PI/180.0;
+    } 
+    else if (lidar_name == init_params.lidar_rear_center.sensor_name) 
+    {
+        if(fabs(values[0]) > 1e-3) init_params.lidar_rear_center.transform.roll += values[0]*M_PI/180.0;
+        if(fabs(values[1]) > 1e-3) init_params.lidar_rear_center.transform.pitch += values[1]*M_PI/180.0;
+        if(fabs(values[2]) > 1e-3) init_params.lidar_rear_center.transform.yaw += values[2]*M_PI/180.0;
+    }
+}
+
 bool rclcomm::readParamsFromJson(const std::string& file_path, InitParams& params)
 {
     std::ifstream ifs(file_path);

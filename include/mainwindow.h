@@ -42,8 +42,10 @@ private slots:
     void on_checkBox_model_stateChanged(int arg1);
     void on_checkBox_locker_yaw_stateChanged(int arg1);
     void on_Button_ground_clicked();
-    void on_Button_setZero_clicked();
-    void on_Button_modify_clicked();
+    void on_Button_trans_setZero_clicked();
+    void on_Button_trans_modify_clicked();
+    void on_Button_rotate_setZero_clicked();
+    void on_Button_rotate_modify_clicked();
     void on_tabWidget_currentChanged(int index);
     void on_Button_stereo_clicked();
     void on_Button_cali_rp_clicked();

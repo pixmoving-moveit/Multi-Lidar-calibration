@@ -245,20 +245,38 @@ void MainWindow::setupModifyTable()
         << QString::fromStdString(commNode->init_params.lidar_rear_top.sensor_name)
         << QString::fromStdString(commNode->init_params.lidar_rear_center.sensor_name);
 
-    ui->tableWidget_modify->setColumnCount(header.size());
-    ui->tableWidget_modify->setHorizontalHeaderLabels(header);
-    ui->tableWidget_modify->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tableWidget_modify->verticalHeader()->setVisible(true);
+    //设置平移参数微调表格---------------------
+    ui->table_trans_modify->setColumnCount(header.size());
+    ui->table_trans_modify->setHorizontalHeaderLabels(header);
+    ui->table_trans_modify->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->table_trans_modify->verticalHeader()->setVisible(true);
 
     // 允许编辑表格内容
-    ui->tableWidget_modify->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed);
+    ui->table_trans_modify->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed);
 
     // 设置三个行表头
-    QStringList rowHeader;
-    rowHeader << "X" << "Y" << "Z";
-    ui->tableWidget_modify->setRowCount(rowHeader.size());
-    ui->tableWidget_modify->setVerticalHeaderLabels(rowHeader);
-    on_Button_setZero_clicked();
+    QStringList rowHeader_trans;
+    rowHeader_trans << "X" << "Y" << "Z";
+    ui->table_trans_modify->setRowCount(rowHeader_trans.size());
+    ui->table_trans_modify->setVerticalHeaderLabels(rowHeader_trans);
+
+    //设置旋转参数微调表格---------------------
+    ui->table_rotate_modify->setColumnCount(header.size());
+    ui->table_rotate_modify->setHorizontalHeaderLabels(header);
+    ui->table_rotate_modify->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->table_rotate_modify->verticalHeader()->setVisible(true);
+
+    // 允许编辑表格内容
+    ui->table_rotate_modify->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed);
+
+    // 设置三个行表头
+    QStringList rowHeader_rotate;
+    rowHeader_rotate << "X (Roll)" << "Y (Pitch)" << "Z (Yaw)";
+    ui->table_rotate_modify->setRowCount(rowHeader_rotate.size());
+    ui->table_rotate_modify->setVerticalHeaderLabels(rowHeader_rotate);
+
+    on_Button_trans_setZero_clicked();
+    on_Button_rotate_setZero_clicked();
 }
 
 void MainWindow::on_checkBox_model_stateChanged(int arg1)
@@ -383,57 +401,112 @@ void MainWindow::on_commandButton_Save_clicked()
     }
 }
 
-void MainWindow::on_Button_setZero_clicked()
+void MainWindow::on_Button_trans_setZero_clicked()
 {
-    // 将tableWidget_modify中所有参数设置为0.0
-    int rowCount = ui->tableWidget_modify->rowCount();    // 3行 (X, Y, Z)
-    int columnCount = ui->tableWidget_modify->columnCount(); // 5列 (雷达)
+    // 将table_trans_modify中所有参数设置为0.0
+    int rowCount = ui->table_trans_modify->rowCount();    // 3行 (X, Y, Z)
+    int columnCount = ui->table_trans_modify->columnCount(); // 5列 (雷达)
     
     for (int row = 0; row < rowCount; ++row) {
         for (int col = 0; col < columnCount; ++col) {
-            QTableWidgetItem *item = ui->tableWidget_modify->item(row, col);
+            QTableWidgetItem *item = ui->table_trans_modify->item(row, col);
             if (item) {
                 item->setText("0.0");
             } else {
                 // 如果item不存在，创建一个新的item
                 item = new QTableWidgetItem("0.0");
                 item->setTextAlignment(Qt::AlignCenter);
-                ui->tableWidget_modify->setItem(row, col, item);
+                ui->table_trans_modify->setItem(row, col, item);
             }
         }
     }
 }
 
-void MainWindow::on_Button_modify_clicked()
+void MainWindow::on_Button_trans_modify_clicked()
 {
     if (!commNode)
     {
-        ui->label_info->setText("Err: 未初始化ROS2节点!");
+        ui->label_info_trans->setText("Err: 未初始化ROS2节点!");
         return;
     }
 
-    int rowCount = ui->tableWidget_modify->rowCount();    // 3行 (X, Y, Z)
-    int columnCount = ui->tableWidget_modify->columnCount(); // 5列 (雷达)
+    int rowCount = ui->table_trans_modify->rowCount();    // 3行 (X, Y, Z)
+    int columnCount = ui->table_trans_modify->columnCount(); // 5列 (雷达)
 
     for (int col = 0; col < columnCount; ++col) 
     {
-        QString sensor_name = ui->tableWidget_modify->horizontalHeaderItem(col)->text();
+        QString sensor_name = ui->table_trans_modify->horizontalHeaderItem(col)->text();
         std::vector<double> values_vec{0.0, 0.0, 0.0};
         for (int row = 0; row < rowCount; ++row) 
         {
-            QTableWidgetItem *item = ui->tableWidget_modify->item(row, col);
+            QTableWidgetItem *item = ui->table_trans_modify->item(row, col);
             if (item) 
             {
                 bool ok = false;
                 values_vec.at(row) = item->text().toDouble(&ok);
                 if (!ok) 
                 {
-                    ui->label_info->setText(QString("第%1行%2列输入错误, 请输入有效的数字！").arg(row + 1).arg(col + 1));
+                    ui->label_info_trans->setText(QString("第%1行%2列输入错误, 请输入有效的数字！").arg(row + 1).arg(col + 1));
                     return;
                 }
             }
         }
         commNode->setAxisModifyByName(sensor_name.toStdString(), values_vec);
     }
-    ui->label_info->setText("参数修改成功: " + QDateTime::currentDateTime().toString("HH:mm:ss"));
+    ui->label_info_trans->setText("参数修改成功: " + QDateTime::currentDateTime().toString("HH:mm:ss"));
+}
+
+void MainWindow::on_Button_rotate_setZero_clicked()
+{
+    // 将table_rotate_modify中所有参数设置为0.0
+    int rowCount = ui->table_rotate_modify->rowCount();    // 3行 (X, Y, Z)
+    int columnCount = ui->table_rotate_modify->columnCount(); // 5列 (雷达)
+    
+    for (int row = 0; row < rowCount; ++row) {
+        for (int col = 0; col < columnCount; ++col) {
+            QTableWidgetItem *item = ui->table_rotate_modify->item(row, col);
+            if (item) {
+                item->setText("0.0");
+            } else {
+                // 如果item不存在，创建一个新的item
+                item = new QTableWidgetItem("0.0");
+                item->setTextAlignment(Qt::AlignCenter);
+                ui->table_rotate_modify->setItem(row, col, item);
+            }
+        }
+    }
+}
+
+void MainWindow::on_Button_rotate_modify_clicked()
+{
+    if (!commNode)
+    {
+        ui->label_info_rotate->setText("Err: 未初始化ROS2节点!");
+        return;
+    }
+
+    int rowCount = ui->table_rotate_modify->rowCount();    // 3行 (X, Y, Z)
+    int columnCount = ui->table_rotate_modify->columnCount(); // 5列 (雷达)
+
+    for (int col = 0; col < columnCount; ++col) 
+    {
+        QString sensor_name = ui->table_rotate_modify->horizontalHeaderItem(col)->text();
+        std::vector<double> values_vec{0.0, 0.0, 0.0};
+        for (int row = 0; row < rowCount; ++row) 
+        {
+            QTableWidgetItem *item = ui->table_rotate_modify->item(row, col);
+            if (item) 
+            {
+                bool ok = false;
+                values_vec.at(row) = item->text().toDouble(&ok);
+                if (!ok) 
+                {
+                    ui->label_info_rotate->setText(QString("第%1行%2列输入错误, 请输入有效的数字！").arg(row + 1).arg(col + 1));
+                    return;
+                }
+            }
+        }
+        commNode->setRotateModifyByName(sensor_name.toStdString(), values_vec);
+    }
+    ui->label_info_rotate->setText("参数修改成功: " + QDateTime::currentDateTime().toString("HH:mm:ss"));
 }

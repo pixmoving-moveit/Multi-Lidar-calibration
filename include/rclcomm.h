@@ -107,6 +107,7 @@ public:
         void setGroundCheckStatusByName(const std::string& lidar_name, const bool& is_checked);
         void setStereoCheckStatusByName(const std::string& lidar_name, const bool& is_checked);
         void setAxisModifyByName(const std::string& lidar_name, const std::vector<double>& values);
+        void setRotateModifyByName(const std::string& lidar_name, const std::vector<double>& values);
 
     protected:
         void run();
